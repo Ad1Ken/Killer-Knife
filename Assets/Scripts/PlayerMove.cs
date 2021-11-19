@@ -14,8 +14,8 @@ public class PlayerMove : MonoBehaviour
 
     private float speed = 3f;
 
-    public Text timer_Text;
-    private int timer;
+    //public Text timer_Text;
+    //private int timer;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,13 +24,13 @@ public class PlayerMove : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
-    void Start()
-    {
-        Time.timeScale = 1f;
-        StartCoroutine(CountTime());
-        timer = 0;
+    //void Start()
+    //{
+    //    Time.timeScale = 1f;
+    //    //StartCoroutine(CountTime());
+    //    timer = 0;
 
-    }
+    //}
     // Update is called once per frame
     void Update()
     {
@@ -85,30 +85,30 @@ public class PlayerMove : MonoBehaviour
     }
 
 
-    IEnumerator RestartGame()
-    {
-        yield return new WaitForSecondsRealtime(2f);
+    //IEnumerator RestartGame()
+    //{
+    //    yield return new WaitForSecondsRealtime(2f);
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene(
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-    }
+    //    UnityEngine.SceneManagement.SceneManager.LoadScene(
+    //        UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    //}
 
-    IEnumerator CountTime()
-    {
-        yield return new WaitForSeconds(1f);
-        timer++;
+    //IEnumerator CountTime()
+    //{
+    //    yield return new WaitForSeconds(1f);
+    //    timer++;
 
-        timer_Text.text = "Timer: " + timer;
+    //    timer_Text.text = "Timer: " + timer;
 
-        StartCoroutine(CountTime());
-    }
+    //    StartCoroutine(CountTime());
+    //}
     void OnTriggerEnter2D(Collider2D target)
     {
         if(target.tag == "Knife")
         {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
 
-            StartCoroutine(RestartGame());
+            FindObjectOfType<HUDHandler>().ActiveGameState(HUDstate.GameOver);
         }
     }
    
